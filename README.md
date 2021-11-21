@@ -1,4 +1,4 @@
-# second-project
+# second-project(Vue:2.x)
 
 ## Project setup
 ```
