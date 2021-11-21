@@ -11,9 +11,16 @@
 
         <div id="nav">
           <router-link to="/">Home</router-link> |
-          <router-link to="/about">About</router-link>
+          <router-link to="/about">About</router-link> |
+          <router-link to="/page1">Page1</router-link> |
+          <router-link to="/page2">Page2</router-link> 
         </div>
-        <router-view/>
+
+        <div class="container">
+          <transition name="fade" mode="out-in">
+            <router-view/>
+          </transition>
+        </div>
         
         <v-footer color="secondary" dark app>
           <p>Vue.js </p>
@@ -33,7 +40,7 @@
 }
 
 #nav {
-  padding: 30px;
+  padding: 25px;
   padding-left: 20px;;
   background-color: #2c3e50;
   margin-top:60px;
@@ -41,9 +48,11 @@
   a {
     font-weight: bold;
     color: #e7e7e7;
+    text-decoration: none;
 
     &.router-link-exact-active {
       color: #42b983;
+      font-size: 22px;   /* <--追加：active要素のみ効果 */
     }
   }
 }
@@ -57,5 +66,16 @@ img{
   /* bottom: 0; */
   /* margin: auto; */
   /* height: 100px; */
+}
+
+/* 以下追加：トランジション(fade-in/out) */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.7s ease;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
