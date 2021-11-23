@@ -30,22 +30,19 @@
           movies:[],
       }
     },
-  
-      created () {
-        let url = process.env.VUE_APP_URL
-        fetch(url)
-        .then( response => {
-          return response.json();
-        })
-        .then( response => {
-          console.log(response);
-          this.movies = response.Search
-        })
-        .catch( (err) => {
-          this.msg = err // エラー処理
-        });
-      }
-  
+    created () {
+      let url = `https://www.omdbapi.com/?s=man&page=7&apikey=${process.env.VUE_APP_URL}`
+      fetch(url)
+      .then( response => {
+        return response.json();
+      })
+      .then( response => {
+        console.log(response);
+        this.movies = response.Search
+      })
+      .catch( (err) => {
+        this.msg = err // エラー処理
+      });
+    }
   }
-
 </script>
