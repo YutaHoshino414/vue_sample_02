@@ -2,7 +2,7 @@
   <div id="app">
     <v-app>
         <v-app-bar color="success" dark app>
-          <div id=""><img alt="Vue logo" src="./assets/logo.svg">
+          <div >
           <v-toolbar-title>Vuetify</v-toolbar-title>
           <router-link to="/">Home</router-link> |
           <router-link to="/about">About</router-link>
@@ -23,12 +23,18 @@
         </div>
         
         <v-footer color="secondary" dark app>
-          <p>Vue.js </p>
-          <p>｜@yhoshino sample</p>
+          <img alt="Vue logo" src="./assets/logo.svg" class="float-right">
+          <div class="float-right">
+          Vue.js ｜©️yhoshino sample
+          </div>
+          
         </v-footer>
     </v-app>
   </div>
 </template>
+<script>
+
+</script>
 
 <style lang="scss">
 #app {
@@ -40,7 +46,7 @@
 }
 
 #nav {
-  padding: 25px;
+  padding: 20px;
   padding-left: 20px;;
   background-color: #2c3e50;
   margin-top:60px;
@@ -60,9 +66,9 @@
 img{
   width: 50px;
   /* float:right; */
-  position: absolute;
+  /* position: absolute;
   right: 30px;
-  top: 70px; 
+  top: 70px;  */
   /* bottom: 0; */
   /* margin: auto; */
   /* height: 100px; */

@@ -1,6 +1,7 @@
 <template>
   <div class="page1">
     <h1 class="mb-5">This is a page 1</h1>
+    <br><br>
     <v-row>
     <v-card
       elevation=""
@@ -26,7 +27,7 @@
   export default {
     data () {
       return{
-          movies:[]
+          movies:[],
       }
     },
   
