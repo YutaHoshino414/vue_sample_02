@@ -9,7 +9,7 @@
     >
       <h3 class="mb-5">映画を検索する</h3>
       <v-btn color="info" v-on:click="counter">click</v-btn>
-      <p class="mt-5">The button above has been clicked <strong>{{ num }}</strong> times.</p>
+      <p class="mt-5">The button above gets the results of page <strong>{{ num }}</strong>.</p>
     </v-sheet>
     <br><br>
     <v-row>
@@ -34,6 +34,7 @@
 </template>
 
 <script>
+
   export default {
     data () {
       return{
@@ -44,7 +45,7 @@
     methods:{
       counter:function(){
         this.num += 1
-        let url = `https://www.omdbapi.com/?s=man&page=${this.num}&apikey=${process.env.VUE_APP_URL}`
+        let url = `https://www.omdbapi.com/?s=woman&page=${this.num}&apikey=${process.env.VUE_APP_URL}`
         fetch(url)
         .then( response => {
         return response.json();

@@ -1,4 +1,6 @@
-# second-project(Vue:2.x)
+# second-project
+
+## Vue:2.x (router,Vuetify)
 
 ## Project setup
 ```
