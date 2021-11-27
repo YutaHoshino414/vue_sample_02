@@ -18,14 +18,14 @@
           <router-link to="/page4">Page4</router-link> 
         </div>
 
-        <div class="container">
+        <div class="container mb-5">
           <transition name="fade" mode="out-in">
             <router-view/>
           </transition>
-        </div>
+        </div><br>
         
-        <v-footer color="secondary" dark app>
-          <img alt="Vue logo" src="./assets/logo.svg" class="float-right">
+        <v-footer color="secondary" dark app absolute height="120px" class="justify-center mt-5">
+          <img alt="Vue logo" src="./assets/logo.svg" class="justify-center">
           <div class="float-right">
           Vue.js ｜©️yhoshino sample
           </div>
