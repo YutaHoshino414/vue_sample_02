@@ -1,24 +1,31 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.1/lodash.min.js"></script>
 <template>
   <div class="page1">
     <h1 class="mb-5">This is a page 1</h1>
     <br><br>
     <v-row>
-    <v-card
-      elevation=""
-      class="mx-auto mb-5"
-      max-width="200"
-      v-for="movie,index in movies" :key='index'
-    >
-    <v-img
-      :src="movie.Poster"
-      height="300px"
-    ></v-img>
-
-    <v-card-title>
-      {{ movie.Title }}
-    </v-card-title>
-    {{ movie.Year }}
-    </v-card>
+      <transition-group name="cards" tag="div"
+          @before-enter="beforeEnter"
+          @after-enter="afterEnter"
+          @enter-cancelled="afterEnter"
+          class="d-flex flex-wrap"
+          >
+        <v-card v-for="movie,index in movies" v-bind:key='movie.Title'
+          :data-index="index"
+          class="card mx-auto mb-5"
+          max-width="200"
+        >
+        <v-img
+          :src="movie.Poster"
+          height="300px"
+        ></v-img>
+    
+        <v-card-title>
+          {{ movie.Title }}
+        </v-card-title>
+        {{ movie.Year }}
+        </v-card>
+      </transition-group>
     </v-row><br><br><br><br><br><br><br><br>
   </div>
 </template>
@@ -43,6 +50,37 @@
       .catch( (err) => {
         this.msg = err // エラー処理
       });
+    },
+    methods:{
+        // トランジション開始でインデックス*100ms分のディレイを付与
+      beforeEnter(el) {
+        el.style.transitionDelay = 100 * parseInt(el.dataset.index, 10) + 'ms'
+      },
+      // トランジション完了またはキャンセルでディレイを削除
+      afterEnter(el) {
+        el.style.transitionDelay = ''
+      }
     }
   }
 </script>
+
+<style scoped>
+/* v-card {
+  display: inline-flex;
+} */
+
+.cards-enter-active, .cards-leave-active {
+  transition: opacity 1s, transform 1.5s;
+}
+.cards-leave-active {
+  position: absolute;
+}
+.cards-enter {
+  opacity: 0;
+  /* transform: translateY(-20px); */
+}
+.cards-leave-to {
+  opacity: 0;
+  /* transform: translateY(20px); */
+}
+</style>

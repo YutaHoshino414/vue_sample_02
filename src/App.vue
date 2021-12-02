@@ -86,4 +86,10 @@ img{
 .fade-leave-to {
   opacity: 0;
 }
+
+.fade-enter-to,
+.fade-leave {
+  opacity: 0.9;
+}
+
 </style>
