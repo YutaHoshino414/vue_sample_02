@@ -16,12 +16,12 @@
           <router-link to="/page2">Page2</router-link> |
           <router-link to="/page3">Page3</router-link> |
           <router-link to="/page4">Page4</router-link> 
-        </div>
+        </div><br>
 
         <div class="container mb-5">
-          <transition name="fade" mode="out-in">
+          <!-- <transition name="fade" mode="out-in"> -->
             <router-view/>
-          </transition>
+          <!-- </transition> -->
         </div><br>
         
         <v-footer color="secondary" dark app absolute height="120px" class="justify-center mt-5">
@@ -34,8 +34,8 @@
     </v-app>
   </div>
 </template>
-<script>
 
+<script>
 </script>
 
 <style lang="scss">

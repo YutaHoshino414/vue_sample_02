@@ -1,7 +1,40 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.1/lodash.min.js"></script>
+<script>
+  export default {
+    data () {
+      return{
+          movies:[],
+      }
+    },
+    created () {
+      let url = `https://www.omdbapi.com/?s=man&page=7&apikey=${process.env.VUE_APP_URL}`
+      fetch(url)
+      .then( response => {
+        return response.json();
+      })
+      .then( response => {
+        console.log(response);
+        this.movies = response.Search
+      })
+      .catch( (err) => {
+        this.msg = err // エラー処理
+      });
+    },
+    methods:{
+        // トランジション開始でインデックス*100ms分のディレイを付与
+      beforeEnter(el) {
+        el.style.transitionDelay = 150 * parseInt(el.dataset.index, 10) + 'ms'
+      },
+      // トランジション完了またはキャンセルでディレイを削除
+      afterEnter(el) {
+        el.style.transitionDelay = ''
+      },
+    }
+  }
+</script>
+
 <template>
   <div class="page1">
-    <h1 class="mb-5">This is a page 1</h1>
+    <h1 class="mb-5 animate__animated animate__bounceInDown animate__delay-1s">This is a page 1</h1>
     <br><br>
     <v-row>
       <transition-group name="cards" tag="div"
@@ -30,54 +63,16 @@
   </div>
 </template>
 
-<script>
-  export default {
-    data () {
-      return{
-          movies:[],
-      }
-    },
-    created () {
-      let url = `https://www.omdbapi.com/?s=man&page=7&apikey=${process.env.VUE_APP_URL}`
-      fetch(url)
-      .then( response => {
-        return response.json();
-      })
-      .then( response => {
-        console.log(response);
-        this.movies = response.Search
-      })
-      .catch( (err) => {
-        this.msg = err // エラー処理
-      });
-    },
-    methods:{
-        // トランジション開始でインデックス*100ms分のディレイを付与
-      beforeEnter(el) {
-        el.style.transitionDelay = 100 * parseInt(el.dataset.index, 10) + 'ms'
-      },
-      // トランジション完了またはキャンセルでディレイを削除
-      afterEnter(el) {
-        el.style.transitionDelay = ''
-      }
-    }
-  }
-</script>
-
 <style scoped>
-/* v-card {
-  display: inline-flex;
-} */
 
 .cards-enter-active, .cards-leave-active {
-  transition: opacity 1s, transform 1.5s;
+  transition: opacity 1s, transform 1s ease;
 }
-.cards-leave-active {
+/* .cards-leave-active {
   position: absolute;
-}
+} */
 .cards-enter {
   opacity: 0;
-  /* transform: translateY(-20px); */
 }
 .cards-leave-to {
   opacity: 0;
