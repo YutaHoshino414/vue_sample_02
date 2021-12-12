@@ -17,15 +17,13 @@
           <router-link to="/page3">Page3</router-link> |
           <router-link to="/page4">Page4</router-link> 
         </div><br>
-
-        <div class="container mb-5">
           <!-- <transition name="fade" mode="out-in"> -->
             <router-view/>
           <!-- </transition> -->
-        </div><br>
+        <br><br><br><br><br><br><br>
         
         <v-footer color="secondary" dark app absolute height="120px" class="justify-center mt-5">
-          <img alt="Vue logo" src="./assets/logo.svg" class="justify-center">
+          <img alt="Vue logo" src="./assets/logo.svg" class="foot-img justify-center">
           <div class="float-right">
           Vue.js ｜©️yhoshino sample
           </div>
@@ -65,7 +63,7 @@
   }
 }
 
-img{
+.foot-img{
   width: 50px;
   /* float:right; */
   /* position: absolute;

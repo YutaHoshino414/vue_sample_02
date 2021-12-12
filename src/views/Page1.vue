@@ -34,6 +34,7 @@
 
 <template>
   <div class="page1">
+    <div class="container mb-5">
     <h1 class="mb-5 animate__animated animate__bounceInDown animate__delay-1s">This is a page 1</h1>
     <br><br>
     <v-row>
@@ -60,6 +61,7 @@
         </v-card>
       </transition-group>
     </v-row><br><br><br><br><br><br><br><br>
+    </div>
   </div>
 </template>
 

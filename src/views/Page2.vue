@@ -1,5 +1,6 @@
 <template>
   <div class="page2">
+    <div class="container mb-5">
     <h1 class="mb-5">This is a page 2</h1>
     <v-sheet
       color="green lighten-5"
@@ -46,6 +47,7 @@
       </v-list-item>
     </v-card>
   </v-row><br><br><br><br>
+  </div>
   </div>
 </template>
 

@@ -12,6 +12,21 @@ export default {
     console.log(this.$el)
 
     var stage = new Stage("myCanvas");
+/*     window.addEventListener("resize", handleResize);
+    handleResize(); 
+    // リサイズ処理
+    function handleResize() {
+      // 画面幅・高さを取得
+      var w = window.innerWidth;
+      var h = window.innerHeight;
+      // Canvas要素の大きさを画面幅・高さに合わせる
+      stage.canvas.width = w;
+      stage.canvas.height = h;
+      // 画面更新する
+      stage.update();
+    } */
+
+
     console.log(stage)
     var bmpBG = new Bitmap("https://raw.githubusercontent.com/monsterdive-web-div/vue3x_books/main/sample-app/src/assets/images/hero-bg-home.svg");
     stage.addChild(bmpBG);
@@ -29,12 +44,12 @@ export default {
     bmp1.y = 100;
     bmp2.x = 800;
     bmp2.y = 100;
-    Tween.get(bmp1, {loop: true})
+    Tween.get(bmp1, /* {loop: true} */)  //{loop: true}で繰り返す
       .wait(500)
-      .to({x: 240, y: 200, scale: 0.7}, 700)
-      .to({x: 400, y: 290, scale: 0.3}, 1000)
-      .to({x: 300, y: 100, scale: 1.2}, 1000)
-      .to({x: 100, y: 50, scale: 0.5}, 700);
+      .to({x: 840, y: 500, scale: 0.5}, 900)
+      .to({x: 200, y: 290, scale: 0.2}, 1000)
+      .to({x: 300, y: 100, scale: 0.8}, 1000)
+      .to({x: 100, y: 50, scale: 0.4}, 700);
 
      Ticker.addEventListener("tick", handleTick);
 
@@ -59,4 +74,5 @@ export default {
 </script>
 
 <style scoped>
+
 </style>

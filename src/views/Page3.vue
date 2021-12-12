@@ -1,5 +1,5 @@
 <template>
-  <div class="page1">
+  <div class="page3">
     <h1 class="mb-5">映画検索</h1>
     <v-sheet
       color="blue-grey lighten-5"
@@ -58,3 +58,9 @@
     },
   }
 </script>
+
+<style scoped>
+  .page3{
+    background-color: #2c3e50;
+  }
+</style>
