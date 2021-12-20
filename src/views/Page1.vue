@@ -6,20 +6,42 @@
       }
     },
     created () {
-      let url = `https://www.omdbapi.com/?s=man&page=7&apikey=${process.env.VUE_APP_URL}`
-      fetch(url)
-      .then( response => {
-        return response.json();
-      })
-      .then( response => {
-        console.log(response);
-        this.movies = response.Search
-      })
-      .catch( (err) => {
-        this.msg = err // エラー処理
-      });
+      let pages = 1
+      while (pages < 7) { 
+        fetch(`https://www.omdbapi.com/?s=man&page=${pages}&apikey=${process.env.VUE_APP_URL}`)
+        .then( response => {
+          return response.json();
+        })
+        .then( response => {
+          /* this.movies = response.Search */
+          const results = response.Search
+          if (results) {
+              results.forEach((result, index) => {
+                this.loadMovie(result.imdbID) 
+                console.log(index)
+              })
+          }
+        })
+        .catch( (err) => {
+          this.msg = err // エラー処理
+        });
+        console.log(pages)
+        pages++
+      } 
     },
     methods:{
+      loadMovie(id){
+        /* results_set.push(id) */
+        /* console.log(results_set) */
+        fetch(`http://www.omdbapi.com/?i=${id}&apikey=${process.env.VUE_APP_URL}`)
+        .then( response => {
+          return response.json();
+        })
+        .then( response => {
+          const result = response
+          this.movies.push(result)
+        })
+      },
         // トランジション開始でインデックス*100ms分のディレイを付与
       beforeEnter(el) {
         el.style.transitionDelay = 150 * parseInt(el.dataset.index, 10) + 'ms'
@@ -44,7 +66,7 @@
           @enter-cancelled="afterEnter"
           class="d-flex flex-wrap"
           >
-        <v-card v-for="movie,index in movies" v-bind:key='movie.Title'
+        <v-card v-for="movie,index in movies" v-bind:key='movie.imdbID'
           :data-index="index"
           class="card mx-auto mb-5"
           max-width="200"

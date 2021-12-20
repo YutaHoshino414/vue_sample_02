@@ -45,7 +45,7 @@
     methods:{
       counter:function(){
         this.num += 1
-        let url = `https://www.omdbapi.com/?s=woman&page=${this.num}&apikey=${process.env.VUE_APP_URL}`
+        let url = `https://www.omdbapi.com/?s=man&page=${this.num}&apikey=${process.env.VUE_APP_URL}`
         fetch(url)
         .then( response => {
         return response.json();
